@@ -44,6 +44,7 @@
     display: inline-block;
     width : 100%;
 }
+
 #aside{
     height: 720px;
     width : 29%;
@@ -51,8 +52,17 @@
     display: inline-block;
     text-align: center;
 }
+
 #section{
     height: 720px;
+    width : 70%;
+    border: #f00 3px solid;
+    display: inline-block;
+    text-align: center;
+}
+
+/* user_review용 추가 */
+#section_ur{
     width : 70%;
     border: #f00 3px solid;
     display: inline-block;
@@ -72,4 +82,19 @@
     justify-content: center;
     border: #f00 3px solid;
     text-align: center;
+}
+
+/* user_review용 추가 */
+.user_review_box{
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px black;
+    margin: 20px auto;
+}
+/* user_review용 추가 */
+.mybox {
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 0px lightblue;
+    margin: 20px auto;
 }

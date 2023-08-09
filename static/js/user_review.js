@@ -20,28 +20,29 @@ function receive_rank() {
 function show_user_review() {
     fetch('/user_review2').then(res => res.json()).then(data => {
         let urs = data['result']
+        console.log(urs)
         // $('#bucket-list').empty()
         urs.forEach((a) => {
             let name = a['gamename']
             let starnum = a['starnum']
             let review = a['review']
-            let today = a['today'].substr(4,17)
+            let today = a['today'].substr(4, 17)
             let imgurl = a['imgurl']
             let stars = '⭐'.repeat(starnum)
 
-            let tmp_html = `<div>
-                                <div style="float: left;">
+            let tmp_html = `<div class = "mybox"> 
+                                <div style="float: left; width: 15%">
                                     <img src="${imgurl}"
                                         style="width:150px; height:90px;" />
                                 </div>
                                 <div>
-                                    <h5 class="card-title" style="float: left; width: 30%;">${name}</h5>
-                                    <p id="star_num">${stars}</p>
-                                    <p class="mycomment">${review}</p>
-                                    <p>${today}</p>
+                                    <h4 class="card-title" style="float: left; width: 60%; text-align:left">${name}</h4>
+                                    <p id="star_num" style="text-align:left">${stars}</p>
+                                    <p style="float: left; width: 60%; text-align:left">${review}</p>
+                                    <p style = "font-size: 12px;">${today}</p>
                                 </div>
-                            </div><br>`
-            $('#bucket-list').append(tmp_html)
+                            </div>`
+            $('#ur-list').append(tmp_html)
         })
 
     })
@@ -70,40 +71,43 @@ function save_user_review() {
 function filter_show() {
     fetch('/user_review2').then(res => res.json()).then(data => {
         let urs = data['result']
-        $('#bucket-list').empty()
+        console.log(urs)
+        $('#ur-list').empty()
         urs.forEach((a) => {
             let cnt = 0;
 
             let name = a['gamename']
             let starnum = a['starnum']
             let review = a['review']
-            let today = a['today'].substr(4,17)
+            let today = a['today'].substr(4, 17)
             let imgurl = a['imgurl']
             let stars = '⭐'.repeat(starnum)
 
-            let tmp_html = `<div>
-                                <div style="float: left;">
+            let tmp_html = `<div class = "mybox"> 
+                                <div style="float: left; width: 15%">
                                     <img src="${imgurl}"
                                         style="width:150px; height:90px;" />
                                 </div>
                                 <div>
-                                    <h5 class="card-title" style="float: left; width: 30%;">${name}</h5>
-                                    <p id="star_num">${stars}</p>
-                                    <p class="mycomment">${review}</p>
-                                    <p>${today}</p>
+                                    <h4 class="card-title" style="float: left; width: 60%; text-align:left">${name}</h4>
+                                    <p id="star_num" style="text-align:left">${stars}</p>
+                                    <p style="float: left; width: 60%; text-align:left">${review}</p>
+                                    <p style = "font-size: 12px;">${today}</p>
                                 </div>
-                            </div><br>`
-
-            if($('#filter2').val() != "전체"){
-                if(starnum != $('#filter2').val()){
+                            </div>`
+            if ($('#filter2').val() != "전체") {
+                if (starnum != $('#filter2').val()) {
                     cnt++
-            }}
-            if($('#filter1').val() != "전체"){
-                if(name != $("select[id = filter1] option:selected").text()){
+                }
+            }
+            if ($('#filter1').val() != "전체") {
+                if (name != $("select[id = filter1] option:selected").text()) {
                     cnt++
-            }}
-            if(cnt == 0){
-                $('#bucket-list').append(tmp_html)
+                }
+            }
+            console.log($("select[id = filter1] option:selected").text(), $('#filter2').val(), cnt)
+            if (cnt == 0) {
+                $('#ur-list').append(tmp_html)
             }
         })
 
