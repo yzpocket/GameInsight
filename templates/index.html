@@ -47,17 +47,16 @@
             <div id="nav_wrap">
                 <!-- Navigation -->
                 <div id="navigation" class="navigation">
-                    <p>nav</p>
                     <div class="nav_menu">
-                        <span><a href="">전문가 리뷰</a></span>
-                        <span><a href="">사용자 리뷰</a></span>
+                        <span><button class="btn btn-success" type="button" onclick="">전문가 리뷰</button></span>
+                        <span><button class="btn btn-info" type="button" onclick="">사용자 리뷰</button></span>
                     </div>
                 </div>
 
                 <!-- Join&Login -->
                 <div id="user_join_login" class="user_join_login">
-                    <span><a href="">회원가입</a></span>
-                    <span><a href="">로그인</a></span>
+                    <span><button class="btn btn-primary" type="button" onclick="user_join()">회원가입</button></span>
+                    <span><button class="btn btn-warning" type="button" onclick="user_login()">로그인</button></span>
                 </div>
             </div>
 		</header>
@@ -66,9 +65,9 @@
         <div id="content_aside">
             <!-- Section -->
             <section id="section"> 
-                <p>section</p>
+                {% block content %}
+                {% endblock %}
             </section>
-        
             <!--Aside-->
             <aside id="aside">
                 <p>aside</p>
