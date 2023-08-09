@@ -1,0 +1,75 @@
+* {
+    font-family: 'Orbit', sans-serif;
+}
+
+.mypic {
+    width: 100%;
+    height: 150px;
+
+    background-image: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url("https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg");
+    background-position: center 50%;
+    background-size: cover;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#nav_wrap{
+    display: inline-block;
+    width : 100%;
+}
+.navigation{
+    border: #f00 3px solid;
+    width : 70%;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.user_join_login{
+    width : 29%;
+    border: #f00 3px solid;
+    display: inline-block;
+    text-align: center;
+}
+
+#content_aside{
+    display: inline-block;
+    width : 100%;
+}
+#aside{
+    height: 720px;
+    width : 29%;
+    border: #f00 3px solid;
+    display: inline-block;
+    text-align: center;
+}
+#section{
+    height: 720px;
+    width : 70%;
+    border: #f00 3px solid;
+    display: inline-block;
+    text-align: center;
+}
+
+#footer{
+    width : 100%;
+    margin: auto;
+    justify-content: center;
+    border: #f00 3px solid;
+    text-align: center;
+}
+#footer>p{
+    margin: auto;
+    display: inline-block;
+    justify-content: center;
+    border: #f00 3px solid;
+    text-align: center;
+}
