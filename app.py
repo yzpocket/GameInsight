@@ -13,7 +13,11 @@ import certifi
 # DB 커넥션 구성
 ca = certifi.where()
 client = MongoClient('mongodb+srv://ohnyong:test@cluster0.lu7mz8j.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
-db = client.dbsparta
+
+# 조영익 MongoDB for listing test
+#client = MongoClient('mongodb+srv://sparta:test@cluster0.fkikqje.mongodb.net/?retryWrites=true&w=majority')
+
+db = client.gameinsight
 
 # 웹 크롤링을 위한 임포트
 import requests
@@ -38,8 +42,37 @@ def home():
 
 # ------------기능 구현 함수 부분----------------------------------------------------------------------------------------------------------------------
 
+# ------평론가 평론 구현 (조영익) start----------------------------------------------------------------------------------------------------------------
+@app.route("/critic_review", methods=["POST"]) # html에는 미적용
+def game_post():
+   url_receive = request.form['url_give']
+   comment_receive=request.form['comment_give']
+   star_receive=request.form['star_give']
+   headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+   data = requests.get(url_receive,headers=headers)
+   soup = BeautifulSoup(data.text, 'html.parser')
+   
+   ogtitle=soup.select_one('meta[property="og:title"]')['content'].split(" - ")[0]
+   if ogtitle!='':
+      ogimage=soup.select_one('meta[property="og:image"]')['content']
+      doc={
+         'title':ogtitle,
+         'image':ogimage,                 
+         'comment': comment_receive,
+         'star':star_receive}
+      db.critics_review.insert_one(doc)
+      return jsonify({'code':200,'msg':'기록 완료!'})
+   else :
+      return jsonify({'code':404,'msg':'게임 정보를 찾을 수 없었습니다.'})
 
-
+@app.route("/critic_review", methods=["GET"]) # POST 미적용 상태, 적용 전 확인은 db = client.dbsparta, client는 테스트용, games_data 값은 db.games로 변경 후 실행
+def game_get():
+   games_data = list(db.critics_review.find({},{'_id':False}))
+   print(games_data)
+   games_data.reverse()
+   print(games_data)
+   return jsonify({'result':games_data, 'msg':'successed'})
+# ------평론가 평론 구현 (조영익) end----------------------------------------------------------------------------------------------------------------
 
 
 # ------------기능 구현 함수 부분------------------------------------------------------------------------------------------------------------------------

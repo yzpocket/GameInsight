@@ -73,3 +73,11 @@
     border: #f00 3px solid;
     text-align: center;
 }
+.ellipsis{
+    white-space:nowrap; 
+    overflow:hidden; 
+    text-overflow:ellipsis;
+}
+.imagemargin{
+    margin: auto 0px auto 0px
+}
