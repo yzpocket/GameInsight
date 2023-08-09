@@ -1,5 +1,5 @@
 * {
-    font-family: 'Orbit', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .mypic {
@@ -20,51 +20,93 @@
     align-items: center;
     justify-content: center;
 }
-#nav_wrap{
-    display: inline-block;
-    width : 100%;
+#nav_wrap {
+    display: flex;
+    align-items: flex-end; /* 아이템을 아래쪽에 정렬 */
+    width: 100%;
+    gap: 1rem;
 }
-.navigation{
+
+.navigation {
     border: #f00 3px solid;
-    width : 70%;
-    display: inline-block;
+    flex: 1;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.user_join_login{
-    width : 29%;
-    border: #f00 3px solid;
-    display: inline-block;
     text-align: center;
 }
 
-#content_aside{
-    display: inline-block;
-    width : 100%;
-}
-#aside{
-    height: 720px;
-    width : 29%;
+.user_join_login {
+    width: 29%;
     border: #f00 3px solid;
-    display: inline-block;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
     text-align: center;
 }
-#section{
+
+.user_join_login button {
+    width: 100%; 
+}
+
+#content_aside {
+    display: flex; 
+    width: 100%;
+}
+
+#aside {
     height: 720px;
+    flex: 0 0 28%; /* 사이드 컨텐츠의 크기를 지정 */
+    border: #f00 3px solid;
+    text-align: center;
+}
+
+#section {
+    height: 720px;
+    flex: 1; /* 내용 컨텐츠가 나머지 공간을 차지하도록 설정 */
+    border: #f00 3px solid;
+    text-align: center;
+}
+
+#join_form_wrap{
+    padding-top : 5px;
     width : 70%;
-    border: #f00 3px solid;
-    display: inline-block;
     text-align: center;
+    margin: auto;
 }
-
-#footer{
-    width : 100%;
+.table td {
+    text-align: left;
+    padding: 17px;
+}
+.join_input {
+    padding: 3.5px;
+}
+.join_title {
+    padding-top: 5px;
+}
+.btn {
+    padding: 5px 15px;
+}
+#footer {
+    width: 100%;
     margin: auto;
     justify-content: center;
     border: #f00 3px solid;
     text-align: center;
+}
+#userid_wrapper {
+    display: flex;
+    align-items: center;
+}
+#useridinput_find_button{
+    margin-left: 10px;
+}
+#postinput_find_button {
+    margin-left: 10px;
+}
+#postinput_wrapper {
+    display: flex;
+    align-items: center;
 }
 #footer>p{
     margin: auto;
