@@ -102,9 +102,31 @@
                     </div>
                 </div>
                 <!-- 필터 -->
-                <div class="mybox">
+                <div>
                     <div>
-                        
+                        <h3>필터</h3>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="input-group mb-3" style="float: left; width: 70%;">
+                            <label class="input-group-text" for="filter1">게임명</label>
+                            <select class="form-select" id="filter1">
+                                <option selected>전체</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3" style="float: right; width: 27%;">
+                            <label class="input-group-text" for="filter2">별점</label>
+                            <select class="form-select" id="filter2">
+                                <option selected>전체</option>
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </div>
+                    </div><br>
+                    <div class="mybucket">
+                        <button onclick="filter_show()" type="button" class="btn btn-outline-primary">필터적용</button>
                     </div>
                 </div>
                 <!-- 리뷰 목록 -->

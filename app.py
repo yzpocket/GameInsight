@@ -12,7 +12,9 @@ from pymongo import MongoClient
 import certifi
 # DB 커넥션 구성
 ca = certifi.where()
-client = MongoClient('mongodb+srv://ohnyong:test@cluster0.lu7mz8j.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
+# client = MongoClient('mongodb+srv://ohnyong:test@cluster0.lu7mz8j.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
+# 내꺼로 임시
+client = MongoClient('mongodb+srv://sparta:test@cluster0.hkkz3cj.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbsparta
 
 # 웹 크롤링을 위한 임포트
@@ -34,11 +36,38 @@ from bs4 import BeautifulSoup
 # "localhost:5001/" URL요청에 메인 뷰 페이지 반환 응답
 @app.route('/')
 def home():
-   return render_template('index.html')
+   return render_template('user_review.html')
 
 # ------------기능 구현 함수 부분----------------------------------------------------------------------------------------------------------------------
 
+@app.route("/user_review", methods=["GET"])
+def index_get():
+    all_games = list(db.game.find({},{'_id':False}))
+    return jsonify({'result': all_games})
 
+@app.route("/user_review2", methods=["GET"])
+def index_get2():
+    all_user_reviews = list(db.user_review.find({},{'_id':False}))
+    return jsonify({'result': all_user_reviews})
+
+@app.route("/user_review", methods=["POST"])
+def save_user_review():
+    
+    gamename = request.form['gamename_give']    
+    starnum = request.form['starnum_give']
+    review = request.form['review_give']
+    today = request.form['today_give']
+
+    tmp = db.game.find_one({'name':gamename})
+    imgurl = tmp['link'] 
+   
+    doc = {'gamename':gamename,
+           'starnum':starnum,
+           'review':review,
+           'today':today,
+           'imgurl':imgurl}
+    db.user_review.insert_one(doc)
+    return jsonify({'msg': '저장 완료!'})
 
 
 
