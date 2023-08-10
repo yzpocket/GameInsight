@@ -33,12 +33,17 @@ soup1 = BeautifulSoup(data1.text, 'html.parser')
 # "localhost:5001/" URL요청에 메인 뷰 페이지 반환 응답
 @app.route('/')
 def home():
-   return render_template('user_review.html')
+   return render_template('index.html')
 
 # ------------기능 구현 함수 부분----------------------------------------------------------------------------------------------------------------------
 
+# user_review 페이지 호출
+@app.route('/user_review')
+def ur():
+   return render_template('user_review.html')
+
 #유저리뷰에 쓰일 top50 게임목록 db에 등록 및 가져오기
-@app.route("/user_review", methods=["GET"])
+@app.route("/user_review_rank", methods=["GET"])
 def user_review_get():
 
     games = soup1.select('#content > div.ranking_list > div.rank-list > div.content-left > table > tbody > tr')
@@ -61,7 +66,7 @@ def user_review_get2():
     return jsonify({'result': all_user_reviews})
 
 #유저리뷰 등록
-@app.route("/user_review", methods=["POST"])
+@app.route("/user_review_save", methods=["POST"])
 def save_user_review():
     
     gamename = request.form['gamename_give']    
