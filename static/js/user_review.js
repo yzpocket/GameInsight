@@ -1,6 +1,6 @@
-$(document).ready(function () {
-    receive_rank();
+$(document).ready(function () {    
     show_user_review();
+    receive_rank();
 });
 function receive_rank() {
     fetch('/user_review').then(res => res.json()).then(data => {
@@ -21,7 +21,6 @@ function show_user_review() {
     fetch('/user_review2').then(res => res.json()).then(data => {
         let urs = data['result']
         console.log(urs)
-        // $('#bucket-list').empty()
         urs.forEach((a) => {
             let name = a['gamename']
             let starnum = a['starnum']
