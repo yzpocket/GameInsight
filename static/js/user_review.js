@@ -2,6 +2,8 @@ $(document).ready(function () {
     show_user_review();
     receive_rank();
 });
+
+// 유저리뷰에 쓰일 top50 게임목록 가져오기
 function receive_rank() {
     fetch('/user_review').then(res => res.json()).then(data => {
         let games = data['result']
@@ -10,13 +12,16 @@ function receive_rank() {
             let num = a['num']
 
             let tmp_html = `<option value=${num}>${name}</option>`
+            // 리뷰 작성에 게임목록 추가
             $('#inputGroupSelect01').append(tmp_html)
+            // 필터에 게임목록 추가
             $('#filter1').append(tmp_html)
         })
 
     })
 }
 
+// 유저리뷰 목록 자동 출력
 function show_user_review() {
     fetch('/user_review2').then(res => res.json()).then(data => {
         let urs = data['result']
@@ -29,8 +34,8 @@ function show_user_review() {
             let imgurl = a['imgurl']
             let stars = '⭐'.repeat(starnum)
 
-            let tmp_html = `<div class = "mybox"> 
-                                <div style="float: left; width: 15%">
+            let tmp_html = `<div class = "ur_mybox"> 
+                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:90px;">
                                     <img src="${imgurl}"
                                         style="width:150px; height:90px;" />
                                 </div>
@@ -47,6 +52,7 @@ function show_user_review() {
     })
 }
 
+// 유저리뷰 저장
 function save_user_review() {
     let formData = new FormData();
 
@@ -67,6 +73,7 @@ function save_user_review() {
     });
 }
 
+//필터적용시 목록 출력
 function filter_show() {
     fetch('/user_review2').then(res => res.json()).then(data => {
         let urs = data['result']
@@ -82,8 +89,8 @@ function filter_show() {
             let imgurl = a['imgurl']
             let stars = '⭐'.repeat(starnum)
 
-            let tmp_html = `<div class = "mybox"> 
-                                <div style="float: left; width: 15%">
+            let tmp_html = `<div class = "ur_mybox"> 
+                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:90px;">
                                     <img src="${imgurl}"
                                         style="width:150px; height:90px;" />
                                 </div>
@@ -94,6 +101,7 @@ function filter_show() {
                                     <p style = "font-size: 12px;">${today}</p>
                                 </div>
                             </div>`
+            //필터 적용
             if ($('#filter2').val() != "전체") {
                 if (starnum != $('#filter2').val()) {
                     cnt++
