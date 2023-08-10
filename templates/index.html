@@ -1,83 +1,40 @@
-<!-- HTML Doctype선언문 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
 
-<head>
-    <!-- 인코딩 캐릭터셋 UTF-8지정 -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 부트스트랩 css 참조 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- jquery 참조 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- 부트스트랩 javascript 참조 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <!-- Google Font 참조 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap" rel="stylesheet">
-    <!-- JS 모듈화 참조 -->
-    <!-- Flask용 -->
-    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
-    <!-- Live Server 용 -->
-    <script src="/static/js/script.js"></script>
+    <!-- Webpage Title -->
+    <title>Hello, world!</title>
 
-    <!-- CSS 모듈화 참조 -->
-    <!-- Flask용 -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
-    <!-- Live Server 용 -->
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Game Insight</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- og태그 -->
-    <meta property="og:title" content="Game Insight" />
-    <meta property="og:description" content="각종 게임의 순위정보! 전문가 및 유저 리뷰를 확인 할 수 있는 커뮤니티 페이지 입니다." />
-    <meta property="og:image" content="https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg" />
-</head>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+		<!-- JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
-<body>
-    <!-- Container(Wrap) -->
-    <div id="wrap">
-        <!-- Header -->
-        <header id="header" class="mypic">
-			<h1>Game Insight</h1>
 
-            <div id="nav_wrap">
-                <!-- Navigation -->
-                <div id="navigation" class="navigation">
-                    <p>nav</p>
-                    <div class="nav_menu">
-                        <span><a href="">전문가 리뷰</a></span>
-                        <span><a href="">사용자 리뷰</a></span>
-                    </div>
-                </div>
+    <script>
+      // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
+      function logout(){
+        $.removeCookie('mytoken');
+        alert('로그아웃!')
+        window.location.href='/login'
+      }
 
-                <!-- Join&Login -->
-                <div id="user_join_login" class="user_join_login">
-                    <span><a href="">회원가입</a></span>
-                    <span><a href="">로그인</a></span>
-                </div>
-            </div>
-		</header>
-		
-        <!-- Content&Aside Wrap -->
-        <div id="content_aside">
-            <!-- Section -->
-            <section id="section"> 
-                <p>section</p>
-            </section>
-        
-            <!--Aside-->
-            <aside id="aside">
-                <p>aside</p>
-            </aside>
-        </div>
-        <!--풋터-->
-        <footer id="footer">
-            <p>©2023 Wisetree. All Rights Reserved.</p>
-        </footer>
-    </div>
-</body>
+    </script>
+
+  </head>
+  <body>
+    <p>
+      <h1 class="title">로그인하고 5초 동안만 볼 수 있는 페이지입니다.</h1>
+      <h1 class="subtitle">계속 새로고침 해보세요</h1>
+    </p>
+    <h5 class="subtitle">나의 이름은: {{user_name}}</h5>
+    <h5 class="subtitle">나의 아이디는: {{user_id}}</h5>
+    <h5 class="subtitle">나의 회원타입은: {{user_type}}</h5>
+    <button class="button is-danger" onclick="logout()">로그아웃하기</button>
+  </body>
 </html>
