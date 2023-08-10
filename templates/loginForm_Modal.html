@@ -1,0 +1,47 @@
+<div id="loginModal" class="modal fade">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form name="loginF" method='post' action='api/login'>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-center">로그인하여 서비스를 이용하세요</h4>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                <div id="notification" class="alert alert-danger" style="display: none;"></div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="user_id">ID :</label>
+                        <input type="text" name="user_id_login" id="user_id_login" placeholder="User ID" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="user_password1">Password :</label>
+                        <input type="password" name="user_password1_login" id="user_password1_login" placeholder="Password" required class="form-control">
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-success" onclick="user_login()">일반 회원 로그인</button>
+                    <br>
+                    <button class="btn btn-primary" onclick="location.href='/joinForm'">회원가입</button>
+                    <br>
+                    <!-- 카카오 로그인 -->
+                    <!-- https://velog.io/@ohjs813/Spring-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-REST-API -->
+                    <a class="p-2"
+                        href="https://kauth.kakao.com/oauth/authorize?client_id=78260a5fb3aaed2791ff147b753670c5&redirect_uri=http://localhost:5001/login/kakaologin&response_type=code">
+                        <!-- REST_API키 및 REDIRECT_URi는 본인걸로 수정하세요 -->
+                        <!-- 저는 redirect_uri을 http://localhost:8080/member/kakaoLogin로 했습니다. -->
+                        <!-- 78260a5fb3aaed2791ff147b753670c5 -->
+                        <!-- http://localhost:5001/ -->
+                        <!-- 본인걸로 수정 시 띄어쓰기 절대 하지 마세요. 오류납니다. -->
+
+                        <img src="/static/resources/kakao_login_medium_wide.png">
+                        <!-- 이미지는 카카오 개발자센터에서 제공하는 login 이미지를 사용했습니다. -->
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

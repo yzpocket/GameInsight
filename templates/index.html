@@ -11,24 +11,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- jquery 참조 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- 부트스트랩 javascript 참조 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+    <!-- Modal 윈도우용 부트스트랩 참조 -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Google Font 참조 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap"
+        rel="stylesheet">
     <!-- JS 모듈화 참조 -->
     <!-- Flask용 -->
-    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- 다음 Daum 주소 API 스크립트 임포트 -->
+    <script src="{{ url_for('static', filename='js/addressApi.js') }}"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 회원가입 유효성체크 -->
+    <script src="{{ url_for('static', filename='js/user_validation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/join_loginApi.js') }}"></script>
+    
     <!-- Live Server 용 -->
     <script src="/static/js/script.js"></script>
 
     <!-- CSS 모듈화 참조 -->
     <!-- Flask용 -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- Live Server 용 -->
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- <link rel="stylesheet" href="/static/css/style.css" /> -->
     <title>Game Insight</title>
 
     <!-- og태그 -->
@@ -42,7 +56,7 @@
     <div id="wrap">
         <!-- Header -->
         <header id="header" class="mypic">
-			<h1>Game Insight</h1>
+            <h1>Game Insight</h1>
 
             <div id="nav_wrap">
                 <!-- Navigation -->
@@ -55,16 +69,20 @@
 
                 <!-- Join&Login -->
                 <div id="user_join_login" class="user_join_login">
-                    <span><button class="btn btn-primary" type="button" onclick="user_join()">회원가입</button></span>
-                    <span><button class="btn btn-warning" type="button" onclick="user_login()">로그인</button></span>
+                    <span><a href=></a><button class="btn btn-primary" type="button"
+                            onclick="location.href = 'joinForm'">회원가입</button></span>
+                    <!-- 로그인 모달부분 -->
+                    <a data-target="#loginModal" role="button" class="btn btn-warning" data-toggle="modal">로그인</a>
+                    <!-- 로그인 모달 경로 참조 -->
+                    {% include 'loginForm_Modal.html' %}
                 </div>
             </div>
-		</header>
-		
+        </header>
+
         <!-- Content&Aside Wrap -->
         <div id="content_aside">
             <!-- Section -->
-            <section id="section"> 
+            <section id="section">
                 {% block content %}
                 {% endblock %}
             </section>
@@ -73,10 +91,14 @@
                 <p>aside</p>
             </aside>
         </div>
-        <!--풋터-->
+        <!-- Footer -->
         <footer id="footer">
-            <p>©2023 Wisetree. All Rights Reserved.</p>
+            <p>COMPANY : YZPOCKET  /  OWNER : Team GameInsight  /  CALL CENTER : 010-2872-5915  /  ADDRESS : 서울시 구로구 디지털로31길 41 / 
+                개인정보관리 책임자 : 대표 김인용 admin@yzpocket.com  /  사업자등록번호 : [237-58-00466]  /  종목 : 응용 소프트웨어 개발 및 공급업
+                
+                <br>Copyright by YZPOCKET. All rights reserved.  </p>
         </footer>
     </div>
 </body>
+
 </html>

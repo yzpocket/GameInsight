@@ -9,7 +9,7 @@
     background-image: linear-gradient(0deg,
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)),
-        url("https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg");
+        url("/static/resources/headerimage.jpg");
     background-position: center 50%;
     background-size: cover;
 
@@ -22,11 +22,51 @@
 }
 #nav_wrap {
     display: flex;
-    align-items: flex-end; /* 아이템을 아래쪽에 정렬 */
+    align-items: flex-end; 
     width: 100%;
     gap: 1rem;
 }
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-header .close {
+    margin-left: auto; 
+}
+.modal-title {
+    flex: 80%;
+    text-align: center;
+    margin: 0;
+    color: black;
+}
 
+.modal-body .form-group label {
+    color: black;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: inline-block;
+    flex: 30%; 
+    padding-right: 10px; 
+    text-align: right;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    display: inline-block;
+    width: auto;
+    flex: 50%; 
+    padding-left: 10px; 
+}
 .navigation {
     border: #f00 3px solid;
     flex: 1;
@@ -56,14 +96,14 @@
 
 #aside {
     height: 720px;
-    flex: 0 0 28%; /* 사이드 컨텐츠의 크기를 지정 */
+    flex: 0 0 28%; 
     border: #f00 3px solid;
     text-align: center;
 }
 
 #section {
     height: 720px;
-    flex: 1; /* 내용 컨텐츠가 나머지 공간을 차지하도록 설정 */
+    flex: 1; 
     border: #f00 3px solid;
     text-align: center;
 }
@@ -72,11 +112,25 @@
     padding-top : 5px;
     width : 70%;
     text-align: center;
-    margin: auto;
+    margin: 0 10%;
+}
+#join_form_wrap .table td {
+    padding: 0 70px;
+    box-sizing: border-box; 
+    vertical-align: middle; 
+}
+.table {
+    width: 100%; 
+    height : 600px;
 }
 .table td {
     text-align: left;
-    padding: 17px;
+}
+#join_form_wrap .table textarea {
+    width: 100%; 
+    height: 50px;
+    margin-top: 10px;
+    resize: vertical; 
 }
 .join_input {
     padding: 3.5px;
@@ -84,15 +138,66 @@
 .join_title {
     padding-top: 5px;
 }
-.btn {
-    padding: 5px 15px;
+
+.modal-header .btn{
+    width: 50px;
+    height: 40px;
+    padding: 1px 1px; 
+    text-align: center;
+    margin: auto;
 }
+.modal-footer .btn {
+    width: 300px;
+    height: 40px;
+    padding: 1px 1px; 
+    text-align: center;
+    margin: auto;
+}
+#loginModal > div > div > form > div.modal-footer > button.btn.btn-primary {
+    margin-top: 10px;
+}
+#loginModal > div > div > form > div.modal-footer > a {
+    flex: 0.5; /* 동일한 공간 차지 */
+    height: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-footer {
+    padding-bottom: 20px; /* 아래 여백을 원하는 값으로 조절 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px; /* 높이 설정 */
+    gap: -25px;
+}
+.modal-body .form-group label {
+    margin-left: 50px; /* 여백을 원하는 값으로 조절 */
+}
+.modal-body .form-group input[type="text"],
+.modal-body .form-group input[type="password"] {
+    margin-right: 50px; /* 오른쪽 여백 조정 */
+}
+.join-button {
+    display: inline-block;
+    margin: 0 150px 0 0; /* 좌우 여백을 원하는 값으로 조정 */
+    width: 150px; /* 버튼의 너비를 지정 */
+    height: 40px; /* 버튼의 높이를 지정 */
+    line-height: 40px; /* 버튼 내부의 텍스트를 수직 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    vertical-align: middle; /* 버튼 내부의 텍스트 수직 가운데 정렬 */
+}
+
 #footer {
     width: 100%;
     margin: auto;
     justify-content: center;
     border: #f00 3px solid;
     text-align: center;
+    font-size: 70%;
+    
 }
 #userid_wrapper {
     display: flex;

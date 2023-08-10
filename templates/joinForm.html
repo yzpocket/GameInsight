@@ -2,7 +2,7 @@
 {% block content %}
 <h1 class="join_title">회원가입</h1>
 <div id="join_form_wrap">
-    <form name="mf" action="join" method="post">
+    <form name="joinForm" action="api/join" method="post">
         <!-- id중복체크용 hidden data--------------- -->
         <input type="hidden" name="id_flag" id="id_flag" value="N">
         <!-- ------------------------- -->
@@ -22,9 +22,10 @@
                 </td>
                 <td>
                     <div id="userid_wrapper">
-                        <input class="join_input" type="text" name="user_id" id="user_id" placeholder="User ID"
-                            onkeyup="ajax_idcheck(this.value)">
-                        <button id="useridinput_find_button" class="btn btn-outline-success" type="button" onclick="ajax_idcheck()">아이디 중복
+                        <input class="join_input" type="text" name="user_id" id="user_id" placeholder="User ID">
+                            <!-- onkeyup="ajax_idcheck(this.value)"> -->
+                        <button id="useridinput_find_button" class="btn btn-success" type="button"
+                            onclick="id_check()">아이디 중복
                             체크</button>
                         <span>&nbsp;*아이디는 영문자, 숫자, _, !만 사용 가능해요</span>
                     </div>
@@ -33,14 +34,16 @@
             <tr>
                 <td><b>비밀번호</b></td>
                 <td>
-                    <input class="join_input" type="password" name="user_password" id="user_password" placeholder="Password">
+                    <input class="join_input" type="password" name="user_password" id="user_password"
+                        placeholder="Password">
                     <span>*비밀번호는 문자,숫자,!,. 포함해서 4~8자리 이내</span>
                 </td>
             </tr>
             <tr>
                 <td><b>비밀번호 확인</b></td>
                 <td>
-                    <input class="join_input" type="password" name="user_password2" id="user_password2" placeholder="Re Password">
+                    <input class="join_input" type="password" name="user_password2" id="user_password2"
+                        placeholder="Re Password">
                 </td>
             </tr>
             <tr>
@@ -58,9 +61,11 @@
                 </td>
                 <td>
                     <div id="postinput_wrapper">
-                        <input class="join_input" type="text" name="user_postcode" id="user_postcode" placeholder="우편번호 찾기 클릭">
+                        <input class="join_input" type="text" name="user_postcode" id="user_postcode"
+                            placeholder="우편번호 찾기 클릭">
                         <!-- 다음카카오 우편번호 API를 활용한 우편번호 검색입력 기능 추가 -->
-                        <button id="postinput_find_button" class="btn btn-outline-success" type="button" onclick="execPostCode();">우편번호 찾기</button>
+                        <button id="postinput_find_button" class="btn btn-success" type="button"
+                            onclick="execPostCode();">우편번호 찾기</button>
                     </div>
                 </td>
             </tr>
@@ -69,9 +74,10 @@
                     <b>주소</b>
                 </td>
                 <td>
-                    <input class="join_input" type="text" name="user_address1" id="user_address1" placeholder="시/군/구 - 자동입력"
-                        onclick="execPostCode();" readonly>
-                    <input class="join_input" type="text" name="user_address2" id="user_address2" placeholder="세부 주소를 입력해 주세요.">
+                    <input class="join_input" type="text" name="user_address1" id="user_address1"
+                        placeholder="시/군/구 - 자동입력" onclick="execPostCode();" readonly>
+                    <textarea class="join_input" name="user_address2" id="user_address2" placeholder="세부 주소를 입력해 주세요."></textarea>
+
                 </td>
             </tr>
             <tr>
@@ -79,15 +85,16 @@
                     <b>회원 타입</b>
                 </td>
                 <td>
-                    <input class="join_input" type="radio"  name="user_type" value="1"> 전문가
-                    <input class="join_input" type="radio"  name="user_type" value="2" checked> 일반인
+                    <input class="join_input" type="radio" name="user_type" value="1"> 전문가
+                    <input class="join_input" type="radio" name="user_type" value="2" checked> 일반인
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class="m3 text-center">
-                    <!-- <button class="btn btn-outline-primary" type="button" onclick="member_check()">회원가입</button> -->
-                    <button class="btn btn-outline-primary" type="button" onclick="join()">회원가입</button>
-                    <button class="btn btn-outline-danger" type="reset">다시쓰기</button>
+                    <!-- <button class="btn btn-primary" type="button" onclick="member_check()">회원가입</button> -->
+                    <button class="btn btn-primary" type="button" onclick="user_join()">회원가입</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-secondary" type="reset">다시쓰기</button>
                 </td>
             </tr>
         </table>
