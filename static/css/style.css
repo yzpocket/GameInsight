@@ -79,5 +79,28 @@
     text-overflow:ellipsis;
 }
 .imagemargin{
-    margin: auto 0px auto 0px
+    margin: 0px 0px auto 0px
 }
+
+/* style for critic review */
+.critic_review{
+    margin: 10px 20px 10px 20px
+}
+
+.critic_review_block{
+    margin-bottom: 30px;
+}
+
+.mybtns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+.mybtns > button {
+    margin-right: 10px;
+}
+
+/* style for critic review end*/
