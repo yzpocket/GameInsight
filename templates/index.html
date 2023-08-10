@@ -1,40 +1,165 @@
-<!doctype html>
+<!-- HTML Doctype선언문 -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
 
-    <!-- Webpage Title -->
-    <title>Hello, world!</title>
+<head>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Webpage Title -->
+  <title>Hello, world!</title>
 
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-		<!-- JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <!-- 인코딩 캐릭터셋 UTF-8지정 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- JS -->
+  <!-- jquery 참조 -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 
-    <script>
-      // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
-      function logout(){
-        $.removeCookie('mytoken');
-        alert('로그아웃!')
-        window.location.href='/login'
-      }
+  <!-- 부트스트랩 css 참조 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- 부트스트랩 javascript 참조 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-    </script>
 
-  </head>
-  <body>
-    <p>
-      <h1 class="title">로그인하고 5초 동안만 볼 수 있는 페이지입니다.</h1>
-      <h1 class="subtitle">계속 새로고침 해보세요</h1>
-    </p>
-    <h5 class="subtitle">나의 이름은: {{user_name}}</h5>
-    <h5 class="subtitle">나의 아이디는: {{user_id}}</h5>
-    <h5 class="subtitle">나의 회원타입은: {{user_type}}</h5>
-    <button class="button is-danger" onclick="logout()">로그아웃하기</button>
-  </body>
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+
+  <!-- 내부 Static 경로 참조 -->
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <script>
+    // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
+    function logout() {
+      $.removeCookie('mytoken');
+      alert('로그아웃!')
+      window.location.href = '/'
+    }
+    // 팝업 열기
+    function openLoginPopup() {
+      $("#login-modal").addClass("is-active");
+    }
+
+    // 팝업 닫기
+    function closeLoginPopup() {
+      $("#login-modal").removeClass("is-active");
+    }
+
+  </script>
+  <title>Game Insight</title>
+
+  <!-- og태그 -->
+  <meta property="og:title" content="Game Insight" />
+  <meta property="og:description" content="각종 게임의 순위정보! 전문가 및 유저 리뷰를 확인 할 수 있는 커뮤니티 페이지 입니다." />
+  <meta property="og:image" content="https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg" />
+</head>
+
+<body>
+  <!-- Container(Wrap) -->
+  <div id="wrap">
+    <!-- Header -->
+    <header id="header" class="mypic">
+      <h1>Game Insight</h1>
+
+      <div id="nav_wrap">
+        <!-- Navigation -->
+        <div id="navigation" class="navigation">
+          <div class="nav_menu">
+            <span><button class="btn btn-success" type="button" onclick="">전문가 리뷰</button></span>
+            <span><button class="btn btn-info" type="button" onclick="">사용자 리뷰</button></span>
+          </div>
+        </div>
+
+        <!-- Join&Login -->
+         
+        <div id="user_join_login" class="user_join_login">
+          <button class="btn btn-success" onclick="show_register()">회원가입</button>
+          <button id="login-button" class="btn btn-success" onclick="openLoginPopup()">로그인하기</button>
+          <button id="logout-button" class="btn btn-success" onclick="logout()">로그아웃하기</button>
+      </div>
+        <!-- 팝업 모달 -->
+        <div id="login-modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="section has-text-centered">
+              <button class="delete is-pulled-right" aria-label="close" onclick="closeLoginPopup()"></button>
+              <h1 class="title">로그인 페이지</h1>
+              <div class="container">
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label" for="login_user_id">ID</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <input type="text" class="input" id="login_user_id" aria-describedby="emailHelp" placeholder="My ID">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label" for="login_user_password">PW</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <input type="password" class="input" id="login_user_password" placeholder="My Password">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="button is-primary" onclick="login()">로그인</button>
+              </div>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" onclick="closeLoginPopup()"></button>
+        </div>
+    </header>
+
+    <!-- Content&Aside Wrap -->
+    <div id="content_aside">
+      <!-- Section -->
+      <section id="section">
+        <div id="register-content">
+          <!-- 여기에 회원가입 양식 내용이 들어갈 것입니다. -->
+        </div>
+        {% block register_content %}{% endblock %}
+        User_ID : {{ user_id }} <br>
+        User_Name : {{ user_name }}<br>
+        user_type Number : {{ user_type }}<br>
+        user_type TEXT : {% if user_type == '1' %}
+          <span>전문가</span><br>
+        {% elif user_type == '2' %}
+          <span>일반유저</span>
+        {% endif %}
+      </section>
+
+      <!--Aside-->
+      <aside id="aside">
+        <p>aside</p>
+      </aside>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+      <p>COMPANY : YZPOCKET / OWNER : Team GameInsight / CALL CENTER : 010-2872-5915 / ADDRESS : 서울시 구로구 디지털로31길 41 /
+        개인정보관리 책임자 : 대표 김인용 admin@yzpocket.com / 사업자등록번호 : [237-58-00466] / 종목 : 응용 소프트웨어 개발 및 공급업
+
+        <br>Copyright by YZPOCKET. All rights reserved.
+      </p>
+    </footer>
+  </div>
+</body>
+
 </html>

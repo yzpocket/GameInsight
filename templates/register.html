@@ -1,53 +1,7 @@
-<!doctype html>
-<html lang="en">
+{% extends 'index.html' %}
 
-<head>
-
-    <!-- Webpage Title -->
-    <title>Hello, world!</title>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
-    <script>
-        // 간단한 회원가입 함수입니다.
-        // 아이디, 비밀번호, 닉네임을 받아 DB에 저장합니다.
-        function register() {
-            $.ajax({
-                type: "POST",
-                url: "/api/register",
-                data: {
-                    id_give: $('#user_id').val(),
-                    pw_give: $('#user_password').val(),
-                    email_give: $('#user_email').val(),
-                    name_give: $('#user_name').val(),
-                    post_give: $('#user_postcode').val(),
-                    addr1_give: $('#user_address1').val(),
-                    addr2_give: $('#user_address2').val(),
-                    type_give: $('input[name=user_type]').val()
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        alert('회원가입이 완료되었습니다.')
-                        window.location.href = '/login'
-                    } else {
-                        alert(response['msg'])
-                    }
-                }
-            })
-        }
-
-    </script>
-</head>
-
-<body>
+{% block register_content %}
+<div id="register-content">
     <div class="section has-text-centered">
         <h1 class="title">회원가입 페이지</h1>
         <div class="container" style="width:60%">
@@ -152,6 +106,6 @@
             <button class="button is-primary" onclick="register()">회원가입</button>
         </div>
     </div>
-</body>
+</div>
 
-</html>
+{% endblock %}
