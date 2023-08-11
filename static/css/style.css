@@ -44,15 +44,28 @@
     display: inline-block;
     width : 100%;
 }
+
 #aside{
+    position: absolute;
     height: 720px;
     width : 29%;
     border: #f00 3px solid;
     display: inline-block;
     text-align: center;
+    margin : 0px 0px 0px 10px;
+
 }
+
 #section{
     height: 720px;
+    width : 70%;
+    border: #f00 3px solid;
+    display: inline-block;
+    text-align: center;
+}
+
+/* user_review용 추가 */
+#section_ur{
     width : 70%;
     border: #f00 3px solid;
     display: inline-block;
@@ -74,7 +87,6 @@
     text-align: center;
 }
 
-/* 팝업 모달 스타일 */
 .modal {
     display: none;
     position: fixed;
@@ -164,3 +176,35 @@
   #postinput_find_button {
     flex: 3;
   }
+
+/* user_review용 추가 */
+.user_review_box{
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px black;
+    margin: 20px auto;
+}
+/* user_review용 추가 */
+.ur_mybox {
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 0px lightblue;
+    margin: 20px auto;
+}
+/* user_review용 추가 */
+.ur_mybox2 {
+    width: 100%;
+    height: 150px;
+
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg");
+    background-position: center 50%;
+    background-size: cover;
+
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+

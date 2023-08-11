@@ -41,11 +41,10 @@ import hashlib
 # ------------크롤링 PATH 부분----------------------------------------------------------------------------------------------------------------------
 
 # 웹 크롤링 URL 지정과 requests를통한 데이터 가져오기->bs를 통한 파싱
-# URL = "https://kworb.net/spotify/country/us_daily.html"
-# headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-# data = requests.get(URL, headers=headers)
-# soup = BeautifulSoup(data.text, 'html.parser')
-
+URL1 = "https://www.gamemeca.com/ranking.php"
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+data1 = requests.get(URL1, headers=headers)
+soup1 = BeautifulSoup(data1.text, 'html.parser')
 
 
 # ------------크롤링 PATH 부분----------------------------------------------------------------------------------------------------------------------
@@ -81,6 +80,10 @@ def home():
 
 # ------------기능 구현 함수 부분----------------------------------------------------------------------------------------------------------------------
 
+# user_review 페이지 호출
+@app.route('/user_review')
+def ur():
+   return render_template('user_review.html')
 
 #################################
 ##  HTML을 주는 부분           ##
@@ -190,7 +193,48 @@ def api_valid():
 
 
 
+#유저리뷰에 쓰일 top50 게임목록 db에 등록 및 가져오기
+@app.route("/user_review_rank", methods=["GET"])
+def user_review_get():
 
+    games = soup1.select('#content > div.ranking_list > div.rank-list > div.content-left > table > tbody > tr')
+    db.user_review_games.delete_many({})
+    for a in games :
+        num = a.select_one('td:nth-child(1)').text[0:4].strip()
+        name = a.select_one('td:nth-child(4) > div.game-name > a').text
+        link = a.select_one('td:nth-child(2) > img')['src']
+        doc = {'num':num,'name':name,'link':link}
+        db.user_review_games.insert_one(doc)
+    
+    all_games = list(db.user_review_games.find({},{'_id':False}))
+    return jsonify({'result': all_games})
+
+#유저리뷰 가져오기
+@app.route("/user_review2", methods=["GET"])
+def user_review_get2():
+
+    all_user_reviews = list(db.user_review.find({},{'_id':False}))
+    return jsonify({'result': all_user_reviews})
+
+#유저리뷰 등록
+@app.route("/user_review_save", methods=["POST"])
+def save_user_review():
+    
+    gamename = request.form['gamename_give']    
+    starnum = request.form['starnum_give']
+    review = request.form['review_give']
+    today = request.form['today_give']
+
+    tmp = db.user_review_games.find_one({'name':gamename})
+    imgurl = tmp['link'] 
+   
+    doc = {'gamename':gamename,
+           'starnum':starnum,
+           'review':review,
+           'today':today,
+           'imgurl':imgurl}
+    db.user_review.insert_one(doc)
+    return jsonify({'msg': '저장 완료!'})
 
 # ------------기능 구현 함수 부분------------------------------------------------------------------------------------------------------------------------
 
