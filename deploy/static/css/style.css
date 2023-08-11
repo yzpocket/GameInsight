@@ -1,0 +1,356 @@
+* {
+    font-family: 'Orbit', sans-serif;
+}
+
+.mypic {
+    width: 100%;
+    height: 150px;
+
+    background-image: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url("https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg");
+    background-position: center 50%;
+    background-size: cover;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav_wrap {
+    display: inline-block;
+    width: 100%;
+}
+
+.navigation {
+    width: 70%;
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user_join_login {
+    width: 29%;
+    display: inline-block;
+    text-align: center;
+}
+
+#content_aside {
+    display: inline-block;
+    width: 100%;
+}
+
+
+#aside {
+
+    position: absolute;
+    height: 720px;
+    width: 29%;
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0px 0px 10px;
+
+    height: 830px;
+    width: 560px;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+
+#footer>p {
+    font-size: 5px;
+}
+
+.ranking-table-header th {
+    padding: 8px;
+    text-align: center;
+}
+
+.ranking-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.game-icon {
+    height: 80%;
+    width: 80%;
+    display: inline-block;
+    text-align: center;
+}
+
+.ranking-table-rows {
+    font-size: 14px;
+}
+
+
+
+
+#section {
+    height: 720px;
+    width: 70%;
+    display: inline-block;
+    text-align: center;
+}
+
+/* user_review용 추가 */
+#section_ur {
+    width: 70%;
+    display: inline-block;
+    text-align: center;
+}
+
+#footer {
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+#footer>p {
+    margin: auto;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.modal {
+    display: none;
+    position: absolute; 
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    z-index: 999;
+
+    /* 팝업 모달 최대 너비 지정 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+/* 팝업 모달 스타일 */
+#login-modal {
+    /* width: 400px; 이 부분 삭제 */
+}
+
+.modal-content .container {
+    width: 100%;
+}
+
+.flex-container {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#aside {
+    position: absolute;
+    bottom: 500;
+    /* 아래쪽 여백 0으로 설정 */
+    right: 0;
+    /* 오른쪽에 고정 */
+}
+
+#header>h1 {
+    font-size: xx-large;
+    font-weight: bolder;
+    padding-bottom: 15px;
+}
+
+#register-content>div>div>div:nth-child(8)>div.field-body>div>div {
+    text-align: left;
+}
+
+#register-content>div>div>div {
+    height: 45px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+#user_postcode {
+    flex: 7;
+    margin-right: 10px;
+}
+
+#postinput_find_button {
+    flex: 3;
+}
+
+/* user_review용 추가 */
+.user_review_box {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px black;
+    margin: 20px auto;
+}
+
+/* user_review용 추가 */
+.ur_mybox {
+    width: 100%;
+    height: 150px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 0px lightblue;
+    margin: 10px auto;
+}
+
+/* user_review용 추가 */
+.ur_mybox2 {
+    width: 100%;
+    height: 150px;
+
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg");
+    background-position: center 50%;
+    background-size: cover;
+
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.imagemargin {
+    margin: 0px 0px auto 0px
+}
+
+/* style for critic review */
+.critic_review {
+    margin: 10px 20px 10px 20px
+}
+
+.critic_review_block {
+    margin-bottom: 30px;
+}
+
+.mybtns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.mybtns>button {
+    margin-right: 10px;
+}
+
+
+
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    /* 예시로 배경색 지정 */
+    padding: 10px;
+    /* 예시로 내부 여백 추가 */
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f0f0f0; /* 예시로 배경색 지정 */
+    padding: 10px; /* 예시로 내부 여백 추가 */
+  }
+
+  #content_aside {
+    display: flex;
+  }
+  
+  #section {
+    flex: 1;
+    padding: 20px; /* 적절한 여백을 추가하세요 */
+    box-sizing: border-box;
+    position: fixed;
+    top: 155px;
+    left: 0;
+    width: 70%; /* 섹션의 너비 조절 */
+    height: 77vh; /* 섹션의 높이를 뷰포트의 높이와 같게 설정 */
+    background-color: #f9f9f9; /* 예시 배경색 */
+    overflow-y: scroll; /* 섹션의 내용이 넘칠 경우 스크롤 표시 */
+  }
+  
+  #aside {
+    flex: 1;
+    padding: 20px; /* 적절한 여백을 추가하세요 */
+    box-sizing: border-box;
+    position: fixed;
+    top: 155px;
+    right: 0;
+    width: 30%; /* 어사이드의 너비 조절 */
+    height: 77vh; /* 어사이드의 높이를 뷰포트의 높이와 같게 설정 */
+    background-color: #f9f9f9; /* 예시 배경색 */
+    overflow-y: scroll; /* 어사이드의 내용이 넘칠 경우 스크롤 표시 */
+  }  
+
+  .mainpage_contents{
+    width: 100%;
+  }
+
+
+  #wrap {
+    position: relative; /* 부모 요소의 위치를 상대적으로 지정 */
+}

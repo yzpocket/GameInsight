@@ -1,0 +1,114 @@
+{% extends 'index.html' %}
+
+{% block register_content %}
+<div id="register-content">
+    <div class="section has-text-centered">
+        <h1 class="title">회원가입 페이지</h1>
+        <div class="container" style="width:60%">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_id">ID</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input" id="user_id" placeholder="My ID">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_password">PW</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="password" class="input" id="user_password" placeholder="My Password">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_name">이름</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input" id="user_name" placeholder="My Name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_email">이메일 주소</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input" id="user_email" placeholder="My E-mail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_postcode" >우편번호</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <div class="input-container">
+                                <input type="text" class="input" id="user_postcode" name="user_postcode" placeholder="My Postal Code 우편번호 찾기를 눌러주세요" readonly>
+                                <button id="postinput_find_button" class="btn btn-outline-success" type="button" onclick="execPostCode();">우편번호 찾기</button>
+                              </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_address1" >시/군/구</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input" id="user_address1" name="user_address1" placeholder="My Province 우편번호 찾기를 눌러주세요" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_address2">상세주소</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input type="text" class="input" id="user_address2" placeholder="My Address">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="user_type">회원 타입</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="join_input" type="radio" name="user_type" value="1"> 전문가
+                            <input class="join_input" type="radio" name="user_type" value="2" checked> 일반인
+                            <input class="join_input" type="radio" name="user_type" value="3"> 관리자
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="button is-primary" onclick="register()">회원가입</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
