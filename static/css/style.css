@@ -46,11 +46,14 @@
 }
 
 #aside{
+    position: absolute;
     height: 720px;
     width : 29%;
     border: #f00 3px solid;
     display: inline-block;
     text-align: center;
+    margin : 0px 0px 0px 10px;
+
 }
 
 #section{
