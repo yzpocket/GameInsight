@@ -215,38 +215,49 @@ def api_valid():
 # ------평론가 평론 구현 (조영익) start----------------------------------------------------------------------------------------------------------------
 @app.route("/critic_review", methods=["POST"]) # html에는 미적용
 def game_post():
-   url_receive = request.form['url_give']
-   comment_receive=request.form['comment_give']
-   star_receive=request.form['star_give']
-   headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-   data = requests.get(url_receive,headers=headers)
-   soup = BeautifulSoup(data.text, 'html.parser')
-   search_url=soup.select_one('meta[property="og:url"]').find('https://www.gamemeca.com/game.php?rts=gmview&')
-   
-   if search_url == -1:
-      ogtitle=''
-   else:
-      ogtitle = soup.select_one('meta[property="og:title"]')['content'].split(" - ")[0]
-      
-   if ogtitle!='':
-      ogimage=soup.select_one('meta[property="og:image"]')['content']
-      tm = time.localtime()
-      critic_review_list = list(db.critic_review.find({}, {'_id': False}))
-      count = len(critic_review_list) + 1
-      upload_time = f'{tm.tm_year}-{tm.tm_mon}-{tm.tm_mday} {tm.tm_hour}:{tm.tm_min}:{tm.tm_sec}({wday[tm.tm_wday]})'
-      commenter = 'name' #'세션 호출을 통해서 받은 토큰이든 usernum이든을 통해서 name 호출(전문가버전이니 name 호출)'
-      doc={
-         'no': count,
-         'title':ogtitle,
-         'image':ogimage,                 
-         'comment': comment_receive,
-         'star':star_receive,
-         'commenter':commenter,
-         'upload_time': upload_time}
-      db.critic_review.insert_one(doc)
-      return jsonify({'code':200,'msg':'기록 완료!'})
-   else :
-      return jsonify({'code':404,'msg':'잘못된 링크입니다.'})
+    url_receive = request.form['url_give']
+    comment_receive=request.form['comment_give']
+    star_receive=request.form['star_give']
+    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url_receive,headers=headers)
+    soup = BeautifulSoup(data.text, 'html.parser')
+    search_url=soup.select_one('meta[property="og:url"]').find('https://www.gamemeca.com/game.php?rts=gmview&')
+    token_receive = request.cookies.get('mytoken')
+    if token_receive:
+        try:
+            payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+            user_info = db.user.find_one({"user_id": payload['user_id']})
+            commenter = user_info["user_name"]
+        except jwt.ExpiredSignatureError:
+            return jsonify({'code':-1,'msg':'로그인 정보가 만료되었습니다. 로그아웃 후 다시 로그인 해 주세요'})
+        except jwt.exceptions.DecodeError:
+            return jsonify({'code':-1,'msg':'로그인 정보를 확인할 수 없습니다.'})
+    
+    if search_url == -1:
+        return jsonify({'code':-1,'msg':'잘못된 링크입니다. 우측의 게임메타 링크를 통해 게임을 찾아보세요!'})
+    if star_receive=='-- 선택하기 --':
+        return jsonify({'code':-1,'msg':'별점을 선택해 주세요!'})
+    if comment_receive.replace(" ", '').replace('','') == '':
+        return jsonify({'code':-1,'msg':'리뷰를 작성해 주세요!'})
+    
+    ogtitle = soup.select_one('meta[property="og:title"]')['content'].split(" - ")[0]
+    ogimage=soup.select_one('meta[property="og:image"]')['content']
+    tm = time.localtime()
+    critic_review_list = list(db.critic_review.find({}, {'_id': False}))
+    count = len(critic_review_list) + 1
+    upload_time = f'{tm.tm_year}-{tm.tm_mon}-{tm.tm_mday} {tm.tm_hour}:{tm.tm_min}:{tm.tm_sec}({wday[tm.tm_wday]})'
+    
+
+    doc={
+        'no': count,
+        'title':ogtitle,
+        'image':ogimage,                 
+        'comment': comment_receive,
+        'star':star_receive,
+        'commenter':commenter,
+        'upload_time': upload_time}
+    db.critic_review.insert_one(doc)
+    return jsonify({'code':200,'msg':'기록 완료!'})
 
 
 @app.route("/critic_review", methods=["GET"]) # POST 미적용 상태, 적용 전 확인은 db = client.dbsparta, client는 테스트용, games_data 값은 db.games로 변경 후 실행

@@ -114,7 +114,33 @@
           <button id="join-button" class="btn btn-primary" onclick="show_register()">회원가입</button>
           <button id="login-button" class="btn btn-warning user_logouted" onclick="openLoginPopup()">로그인하기</button>
           <button id="logout-button" class="btn btn-danger user_loggined" onclick="logout()">로그아웃하기</button>
+          <button id="critic-button" class="btn btn-dark" style="display:none;" onclick="critic_showing()">작성하기</button>
         </div>
+
+    </header>
+
+    <!-- Content&Aside Wrap -->
+    <div id="content_aside" class="flex-container overflow-auto">
+      <section id="section" class="flex-item ">
+        <!-- Section -->
+        {% block mainsection_content %}{% endblock %}
+        {% block register_content %}{% endblock %}
+        {% block user_review_content %}{% endblock %}
+      </section>
+
+      <!--Aside-->
+      <aside id="aside">
+        <table class="ranking-table">
+          <tr class="ranking-table-header">
+            <th class="tg-rank" colspan="1" width="20%">순위</th>
+            <th class="tg-img" width="20%">이미지</th>
+            <th class="tg-name" width="30%">이름</th>
+            <th class="tg-info" width="30%">정보</th>
+          </tr>
+          <tbody id="game-rank">
+
+          </tbody>
+        </table>
         <!-- 팝업 모달 -->
         <div id="login-modal" class="modal">
           <div class="modal-background"></div>
@@ -154,30 +180,6 @@
           </div>
           <button class="modal-close is-large" aria-label="close" onclick="closeLoginPopup()"></button>
         </div>
-    </header>
-
-    <!-- Content&Aside Wrap -->
-    <div id="content_aside" class="flex-container">
-      <section id="section" class="flex-item">
-        <!-- Section -->
-        {% block mainsection_content %}{% endblock %}
-        {% block register_content %}{% endblock %}
-        {% block user_review_content %}{% endblock %}
-      </section>
-
-      <!--Aside-->
-      <aside id="aside">
-        <table class="ranking-table">
-          <tr class="ranking-table-header">
-            <th class="tg-rank" colspan="1" width="20%">순위</th>
-            <th class="tg-img" width="20%">이미지</th>
-            <th class="tg-name" width="30%">이름</th>
-            <th class="tg-info" width="30%">정보</th>
-          </tr>
-          <tbody id="game-rank">
-
-          </tbody>
-        </table>
     </div>
     </aside>
     <!-- --------------------------------- -->
