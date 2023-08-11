@@ -102,6 +102,10 @@ def home():
 def ur():
    return render_template('user_review.html')
 
+@app.route('/critic_review')
+def critic():
+    return render_template('critic_review.html')
+
 #################################
 ##  HTML을 주는 부분           ##
 #################################
@@ -119,6 +123,8 @@ def mainsection():
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+
 
 
 #################################
@@ -213,7 +219,7 @@ def api_valid():
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 # ------평론가 평론 구현 (조영익) start----------------------------------------------------------------------------------------------------------------
-@app.route("/critic_review", methods=["POST"]) # html에는 미적용
+@app.route("/api/critic_review", methods=["POST"]) # html에는 미적용
 def game_post():
     url_receive = request.form['url_give']
     comment_receive=request.form['comment_give']
@@ -260,7 +266,7 @@ def game_post():
     return jsonify({'code':200,'msg':'기록 완료!'})
 
 
-@app.route("/critic_review", methods=["GET"]) # POST 미적용 상태, 적용 전 확인은 db = client.dbsparta, client는 테스트용, games_data 값은 db.games로 변경 후 실행
+@app.route("/api/critic_review", methods=["GET"]) # POST 미적용 상태, 적용 전 확인은 db = client.dbsparta, client는 테스트용, games_data 값은 db.games로 변경 후 실행
 def game_get():
    games_data = list(db.critic_review.find({},{'_id':False}))
    games_data.reverse()
