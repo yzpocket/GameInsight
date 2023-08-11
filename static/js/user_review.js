@@ -3,6 +3,11 @@ $(document).ready(function () {
     receive_rank();
 });
 
+function show_user_reviewpage() {
+    // '/user_review'로 페이지 이동
+    window.location.href = '/user_review';
+}
+
 // 유저리뷰에 쓰일 top50 게임목록 가져오기
 function receive_rank() {
     fetch('/user_review_rank').then(res => res.json()).then(data => {

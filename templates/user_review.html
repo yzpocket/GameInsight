@@ -1,143 +1,75 @@
-<!-- HTML Doctype선언문 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'index.html' %}
 
-<head>
-    <!-- 인코딩 캐릭터셋 UTF-8지정 -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 부트스트랩 css 참조 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- jquery 참조 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- 부트스트랩 javascript 참조 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <!-- Google Font 참조 -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap"
-        rel="stylesheet">
-    <!-- JS 모듈화 참조 -->
-    <!-- Flask용 -->
-    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
-    <!-- Live Server 용 -->
-    <script src="/static/js/user_review.js"></script>
-
-    <!-- CSS 모듈화 참조 -->
-    <!-- Flask용 -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
-    <!-- Live Server 용 -->
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Game Insight</title>
-
-    <!-- og태그 -->
-    <meta property="og:title" content="Game Insight" />
-    <meta property="og:description" content="각종 게임의 순위정보! 전문가 및 유저 리뷰를 확인 할 수 있는 커뮤니티 페이지 입니다." />
-    <meta property="og:image" content="https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg" />
-</head>
-
-<body>
-    <!-- Container(Wrap) -->
-    <div id="wrap">
-        <!-- Header -->
-        <header id="header" class="mypic">
-            <h1>Game Insight</h1>
-
-            <div id="nav_wrap">
-                <!-- Navigation -->
-                <div id="navigation" class="navigation">
-                    <p>nav</p>
-                    <div class="nav_menu">
-                        <span><a href="">전문가 리뷰</a></span>
-                        <span><a href="">사용자 리뷰</a></span>
-                    </div>
-                </div>
-
-                <!-- Join&Login -->
-                <div id="user_join_login" class="user_join_login">
-                    <span><a href="">회원가입</a></span>
-                    <span><a href="">로그인</a></span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Content&Aside Wrap -->
-        <div id="content_aside">
-            <!-- Section -->
-            <section id="section_ur">
-                <div class="ur_mybox2">
-                    <h1>유저 리뷰</h1>
-                </div>
-                <!-- 리뷰 작성 -->
-                <div class="user_review_box">
-                    <div>
-                        <h3>리뷰 작성</h3>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <div class="input-group mb-3" style="float: left; width: 70%;">
-                            <label class="input-group-text" for="inputGroupSelect01">게임명</label>
-                            <select class="form-select" id="inputGroupSelect01">
-                                <option selected>선택하기...</option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-3" style="float: right; width: 27%;">
-                            <label class="input-group-text" for="inputGroupSelect02">별점</label>
-                            <select class="form-select" id="inputGroupSelect02">
-                                <option selected>선택하기...</option>
-                                <option value="1">⭐</option>
-                                <option value="2">⭐⭐</option>
-                                <option value="3">⭐⭐⭐</option>
-                                <option value="4">⭐⭐⭐⭐</option>
-                                <option value="5">⭐⭐⭐⭐⭐</option>
-                            </select>
-                        </div>
-                    </div><br>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here"
-                            id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea" style="vertical-align: top;">리뷰 작성</label>
-                    </div><br>
-                    <div class="mybucket">
-                        <button onclick="save_user_review()" type="button" class="btn btn-outline-primary">작성하기</button>
-                    </div>
-                </div>
-                <!-- 필터 -->
-                <div class="user_review_box">
-                    <div style="float: left; width: 10%;">
-                        <h3>필터</h3>
-                    </div>
-                    <div class="form-floating mb-3" style="float: left; width: 90%;">
-                        <div class="input-group mb-3" style="float: left; width: 70%;">
-                            <label class="input-group-text" for="filter1">게임명</label>
-                            <select class="form-select" id="filter1">
-                                <option selected>전체</option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-3" style="float: right; width: 27%;">
-                            <label class="input-group-text" for="filter2">별점</label>
-                            <select class="form-select" id="filter2">
-                                <option selected>전체</option>
-                                <option value="1">⭐</option>
-                                <option value="2">⭐⭐</option>
-                                <option value="3">⭐⭐⭐</option>
-                                <option value="4">⭐⭐⭐⭐</option>
-                                <option value="5">⭐⭐⭐⭐⭐</option>
-                            </select>
-                        </div>
-                    </div><br>
-                    <div class="">
-                        <button onclick="filter_show()" type="button" class="btn btn-outline-primary">필터적용</button>
-                    </div>
-                </div>
-                <!-- 리뷰 목록 -->
-                <div class="user_review_box" id="ur-list">
-                    <div>
-                        <h3>리뷰 목록</h3>
-                    </div>
-                    <!-- <div>
+{% block user_review_content %}
+<div class="ur_mybox2">
+    <h1>유저 리뷰</h1>
+</div>
+<!-- 리뷰 작성 -->
+<div class="user_review_box">
+    <div>
+        <h3>리뷰 작성</h3>
+    </div>
+    <div class="form-floating mb-3">
+        <div class="input-group mb-3" style="float: left; width: 70%;">
+            <label class="input-group-text" for="inputGroupSelect01">게임명</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>선택하기...</option>
+            </select>
+        </div>
+        <div class="input-group mb-3" style="float: right; width: 27%;">
+            <label class="input-group-text" for="inputGroupSelect02">별점</label>
+            <select class="form-select" id="inputGroupSelect02">
+                <option selected>선택하기...</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+    </div><br>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea" style="vertical-align: top;">리뷰 작성</label>
+    </div><br>
+    <div class="mybucket">
+        <button onclick="save_user_review()" type="button" class="btn btn-outline-primary">작성하기</button>
+    </div>
+</div>
+<!-- 필터 -->
+<div class="user_review_box">
+    <div style="float: left; width: 10%;">
+        <h3>필터</h3>
+    </div>
+    <div class="form-floating mb-3" style="float: left; width: 90%;">
+        <div class="input-group mb-3" style="float: left; width: 70%;">
+            <label class="input-group-text" for="filter1">게임명</label>
+            <select class="form-select" id="filter1">
+                <option selected>전체</option>
+            </select>
+        </div>
+        <div class="input-group mb-3" style="float: right; width: 27%;">
+            <label class="input-group-text" for="filter2">별점</label>
+            <select class="form-select" id="filter2">
+                <option selected>전체</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+    </div><br>
+    <div class="">
+        <button onclick="filter_show()" type="button" class="btn btn-outline-primary">필터적용</button>
+    </div>
+</div>
+<!-- 리뷰 목록 -->
+<div class="user_review_box" id="ur-list">
+    <div>
+        <h3>리뷰 목록</h3>
+    </div>
+    <!-- <div>
                         <div style="float: left;">
                             <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
                                 style="width:150px; height:90px;" />
@@ -148,21 +80,5 @@
                             <p class="mycomment">리뷰리뷰리뷰리뷰리뷰리뷰</p>
                         </div>
                     </div> -->
-                </div>
-            </section>
-
-            <!--Aside-->
-            <aside id="aside">
-                <p>
-
-                </p>
-            </aside>
-        </div>
-        <!--풋터-->
-        <footer id="footer">
-            <p>©2023 Wisetree. All Rights Reserved.</p>
-        </footer>
-    </div>
-</body>
-
-</html>
+</div>
+{% endblock %}
