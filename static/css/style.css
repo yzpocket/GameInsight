@@ -46,6 +46,7 @@
 }
 
 
+/* aside 임의로 작업했으니 반영 안해도됨 */
 #aside{
 
     position: absolute;
@@ -56,10 +57,6 @@
     text-align: center;
     margin : 0px 0px 0px 10px;
 
-    height: 830px;
-    width : 560px;
-    display: inline-block;
-    text-align: center;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -220,30 +217,11 @@
 /* user_review용 추가 */
 .ur_mybox {
     width: 100%;
+    height: 150px;
     padding: 30px;
     box-shadow: 0px 0px 10px 0px lightblue;
-    margin: 20px auto;
+    margin: 10px auto;
 }
-/* user_review용 추가 */
-.ur_mybox2 {
-    width: 100%;
-    height: 150px;
-
-    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg");
-    background-position: center 50%;
-    background-size: cover;
-
-    color: black;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-
 
 .ellipsis{
     white-space:nowrap; 

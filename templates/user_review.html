@@ -1,14 +1,11 @@
 {% extends 'index.html' %}
 
 {% block user_review_content %}
-<div class="ur_mybox2">
-    <h1>유저 리뷰</h1>
-</div>
 <!-- 리뷰 작성 -->
 <div class="user_review_box">
     <div>
-        <h3>리뷰 작성</h3>
-    </div>
+        <h1 style="font-size: 20px; font-weight: bolder;">사용자 리뷰 작성</h1>
+    </div><br>
     <div class="form-floating mb-3">
         <div class="input-group mb-3" style="float: left; width: 70%;">
             <label class="input-group-text" for="inputGroupSelect01">게임명</label>
@@ -37,11 +34,14 @@
     </div>
 </div>
 <!-- 필터 -->
-<div class="user_review_box">
+<div>
+    <h4 style="font-size: 20px; font-weight: bolder;" >리뷰 목록</h4>
+</div>
+<div class="user_review_box" style="height: 80px;">
     <div style="float: left; width: 10%;">
-        <h3>필터</h3>
+        <h3 style="font-weight: bolder; font-size: 25px;" >필터</h3>
     </div>
-    <div class="form-floating mb-3" style="float: left; width: 90%;">
+    <div class="form-floating mb-3" style="float: left; width: 70%;">
         <div class="input-group mb-3" style="float: left; width: 70%;">
             <label class="input-group-text" for="filter1">게임명</label>
             <select class="form-select" id="filter1">
@@ -59,16 +59,14 @@
                 <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
         </div>
-    </div><br>
-    <div class="">
+    </div>
+    <div style="float: left; width: 20%;">
         <button onclick="filter_show()" type="button" class="btn btn-outline-primary">필터적용</button>
     </div>
 </div>
 <!-- 리뷰 목록 -->
 <div class="user_review_box" id="ur-list">
-    <div>
-        <h3>리뷰 목록</h3>
-    </div>
+
     <!-- <div>
                         <div style="float: left;">
                             <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"

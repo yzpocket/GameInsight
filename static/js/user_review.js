@@ -40,9 +40,8 @@ function show_user_review() {
             let stars = '⭐'.repeat(starnum)
 
             let tmp_html = `<div class = "ur_mybox"> 
-                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:90px;">
-                                    <img src="${imgurl}"
-                                        style="width:150px; height:90px;" />
+                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:100px;">
+                                    <img src="${imgurl}" style="width:150px; height:90px;" />
                                 </div>
                                 <div>
                                     <h4 class="card-title" style="float: left; width: 60%; text-align:left">${name}</h4>
@@ -95,9 +94,8 @@ function filter_show() {
             let stars = '⭐'.repeat(starnum)
 
             let tmp_html = `<div class = "ur_mybox"> 
-                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:90px;">
-                                    <img src="${imgurl}"
-                                        style="width:150px; height:90px;" />
+                                <div style="float: left; width: 15%; margin : 0px 10px 0px 0px; width:150px; height:100px;">
+                                    <img src="${imgurl}" style="width:150px; height:90px;" />
                                 </div>
                                 <div>
                                     <h4 class="card-title" style="float: left; width: 60%; text-align:left">${name}</h4>
