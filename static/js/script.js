@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const token = $.cookie('mytoken');
+    critic_button_showing();
     if (token) {
         // 토큰이 존재하면 로그인한 상태로 간주하여 화면에 다른 내용을 표시할 수 있습니다.
         // 이에 맞게 로그아웃 버튼을 보이게하고, 로그인 버튼을 숨깁니다.
@@ -10,7 +11,6 @@ $(document).ready(function () {
         // 토큰이 없는 경우는 로그아웃 버튼을 숨기고, 로그인 버튼을 보이게 합니다.
         $('#logout-button').hide();
         $('#login-button').show();
-        $('#join-button').show();
     }
     listing()
 });
@@ -117,6 +117,7 @@ function execPostCode() {
            console.log(fullRoadAddr);
            
            
+           
            $("[name=user_postcode]").val(data.zonecode);
            $("[name=user_address1]").val(fullRoadAddr);
            document.getElementById("user_address2").focus();
@@ -149,7 +150,7 @@ function critic_listing() {
       .then((data) => {
         let rows = data['result']
         $('#section').empty()
-        $('#section').append(`<div class="col row-cols-4 row-cols-md-1 g-0" id="cards-box">`)
+        $('#section').append(`<div class="col row-cols-4 row-cols-md-1 g-0 overflow-auto" id="cards-box">`)
         rows.forEach((a)=>{
               tmp_html = `<div class="card mb-3" style="max-height: auto;">
                 <div class="row row-cols-2 g-0">
@@ -177,12 +178,17 @@ function critic_showing() {
   $('#section').empty()
   tmp_html = `
   <div class="critic_review">
-  <h5 style="float:left;margin-left:10px"><label>게임 URL</h5><span style="float:left;margin-left:10px"><a href="https://www.gamemeca.com/game.php" target="_blank">게임메카 링크</a></span></label>
+    <h5 style="float:left;margin-left:10px;margin-bottom:5px">게임 URL
+        <label>
+            <span style="float:left;margin-left:10px">
+                <a href="https://www.gamemeca.com/game.php" target="_blank">게임메카 링크</a>
+            </span>
+        </label>
+    </h5>
     <div class="critic_review_block" >
-        <input id="critic_url" type="email" class="form-control" placeholder="게임 메카에서 게임을 찾아보세요!">
-        
+        <input id="critic_url" type="email" class="form-control" placeholder="게임 메카에서 게임을 찾아보세요!">  
     </div>
-    <h5 style="float:left;margin-left:10px"><label for="inputGroupSelect01">별점</label></h5>
+    <h5 style="float:left;margin-left:10px;margin-bottom:5px"><label for="inputGroupSelect01">별점</label></h5>
     <div class="input-group critic_review_block" >
         <select class="form-select" id="critic_star">
             <option selected>-- 선택하기 --</option>
@@ -193,11 +199,12 @@ function critic_showing() {
             <option value="5">⭐⭐⭐⭐⭐</option>
         </select>
     </div>
-    <h5 style="float:left;margin-left:10px"><label for="floatingTextarea2">리뷰</label></h5>
+    <h5 style="float:left;margin-left:10px;margin-bottom:5px"><label for="floatingTextarea2">리뷰</label></h5>
     <div class="critic_review_block">
         <textarea id="critic_comment" class="form-control" style = "height:200px;" placeholder="리뷰를 남겨주세요!"></textarea>
         
     </div>
+    
     <div class="mybtns">
         <button onclick="close_box()" type="button" class="btn btn-dark">기록하기</button>
     </div>
@@ -206,13 +213,6 @@ $('#section').append(tmp_html)
 }
 
 function critic_posting() {
-  let name
-  fetch('/api/nick',{method:'GET',})
-  .then((res) => res.json())
-  .then((data) => {
-    name=data['user_name']
-    }
-  )
   let formData = new FormData()
   let url = $('#critic_url').val()
   let comment = $('#critic_comment').val()
@@ -220,16 +220,17 @@ function critic_posting() {
   formData.append('url_give', url)
   formData.append('comment_give', comment)
   formData.append('star_give', star)
-  formData.append('commenter', name)
-  fetch('/api/critic_review', { method: 'POST', body: formData })
+  fetch('/critic_review', { method: 'POST', body: formData })
       .then((res) => res.json())
       .then((data) => {
-        if(data['code']==404){
-          alert('잘못된 게임 링크입니다. 게임메카에서 리뷰를 원하는 게임을 검색해 보세요.')
+        if(data['code']==-1){
+          alert(data['msg'])
         }
-        else if(data['code']==200)
+        else if(data['code']==200){
           alert('저장되었습니다.')
           window.location.reload()
+        }
+          
       })
 }
 
@@ -243,22 +244,17 @@ function close_box(){
 }
 
 function critic_button_showing(){
-    // {% if user_type == '2' %}
-    // <span>전문가</span><br>
-    // {% elif user_type == '1' %}
-    // <span>일반유저</span>
-    // {% endif %}
-  fetch('/api/nick',{method:'GET',})
+  fetch('/api/logined',{method:'GET',})
   .then((res) => res.json())
   .then((data) => {
-    if (data['유저 분류(전문가)']==1){
-      tmp_html=`<span><a href="#" onclick="critic_showing()">평론가 작성</a></span>`
-      $('#nav_menu').append(tmp_html)
+    if (data['result']=='success' && data['user_type'] == 1){
+      $('#critic-button').show()
+    }
+    else{
+      $('#critic-button').hide()
     }
   })
 }
-
-
 
 function listing() {
     fetch('/game_ranking').then((res) => res.json()).then((data) => {

@@ -114,6 +114,7 @@
           <button id="join-button" class="btn btn-primary" onclick="show_register()">회원가입</button>
           <button id="login-button" class="btn btn-warning user_logouted" onclick="openLoginPopup()">로그인하기</button>
           <button id="logout-button" class="btn btn-danger user_loggined" onclick="logout()">로그아웃하기</button>
+          <button id="critic-button" class="btn btn-dark" style="display:none;" onclick="critic_showing()">작성하기</button>
         </div>
         <!-- 팝업 모달 -->
         <div id="login-modal" class="modal">
@@ -157,8 +158,8 @@
     </header>
 
     <!-- Content&Aside Wrap -->
-    <div id="content_aside" class="flex-container">
-      <section id="section" class="flex-item">
+    <div id="content_aside" class="flex-container overflow-auto">
+      <section id="section" class="flex-item ">
         <!-- Section -->
         <div id="register-content">
           <!-- 여기에 회원가입 양식 내용이 들어갈 것입니다. -->
