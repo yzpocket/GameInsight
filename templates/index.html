@@ -39,6 +39,10 @@
   <!-- JavaScript -->
   <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
+  <!-- Daum 주소 API 활용 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
   <script>
     // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
     function logout() {
@@ -82,12 +86,12 @@
         </div>
 
         <!-- Join&Login -->
-         
+
         <div id="user_join_login" class="user_join_login">
-          <button class="btn btn-success" onclick="show_register()">회원가입</button>
-          <button id="login-button" class="btn btn-success" onclick="openLoginPopup()">로그인하기</button>
-          <button id="logout-button" class="btn btn-success" onclick="logout()">로그아웃하기</button>
-      </div>
+          <button id="join-button" class="btn btn-primary" onclick="show_register()">회원가입</button>
+          <button id="login-button" class="btn btn-warning user_logouted" onclick="openLoginPopup()">로그인하기</button>
+          <button id="logout-button" class="btn btn-danger user_loggined" onclick="logout()">로그아웃하기</button>
+        </div>
         <!-- 팝업 모달 -->
         <div id="login-modal" class="modal">
           <div class="modal-background"></div>
@@ -103,7 +107,8 @@
                   <div class="field-body">
                     <div class="field">
                       <div class="control">
-                        <input type="text" class="input" id="login_user_id" aria-describedby="emailHelp" placeholder="My ID">
+                        <input type="text" class="input" id="login_user_id" aria-describedby="emailHelp"
+                          placeholder="My ID">
                       </div>
                     </div>
                   </div>
@@ -129,26 +134,26 @@
     </header>
 
     <!-- Content&Aside Wrap -->
-    <div id="content_aside">
-      <!-- Section -->
-      <section id="section">
+    <div id="content_aside" class="flex-container">
+      <section id="section" class="flex-item">
+        <!-- Section -->
         <div id="register-content">
           <!-- 여기에 회원가입 양식 내용이 들어갈 것입니다. -->
         </div>
         {% block register_content %}{% endblock %}
-        User_ID : {{ user_id }} <br>
-        User_Name : {{ user_name }}<br>
-        user_type Number : {{ user_type }}<br>
-        user_type TEXT : {% if user_type == '1' %}
-          <span>전문가</span><br>
-        {% elif user_type == '2' %}
-          <span>일반유저</span>
-        {% endif %}
       </section>
 
       <!--Aside-->
-      <aside id="aside">
-        <p>aside</p>
+      <aside id="aside" class="flex-item">
+        User_ID : {{ user_id }} <br>
+        User_Name : {{ user_name }}<br>
+        user_type Number : {{ user_type }}<br>
+        user_type TEXT :
+        {% if user_type == '2' %}
+        <span>전문가</span><br>
+        {% elif user_type == '1' %}
+        <span>일반유저</span>
+        {% endif %}
       </aside>
     </div>
     <!-- Footer -->

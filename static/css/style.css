@@ -118,3 +118,49 @@
 .modal-content .container {
     width: 100%;
 }
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flex-container {
+    display: flex;
+  }
+  
+  .flex-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #aside {
+    position: absolute; 
+    bottom: 500; /* 아래쪽 여백 0으로 설정 */
+    right: 0; /* 오른쪽에 고정 */
+  }
+  #header > h1{
+    font-size: xx-large;
+    font-weight: bolder;
+    padding-bottom: 15px;
+  }
+  #register-content > div > div > div:nth-child(8) > div.field-body > div > div{
+    text-align: left;
+  }
+
+  #register-content > div > div > div{
+    height: 45px;
+  }
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  #user_postcode {
+    flex: 7;
+    margin-right: 10px;
+  }
+  
+  #postinput_find_button {
+    flex: 3;
+  }

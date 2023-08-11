@@ -56,24 +56,27 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label" for="user_postcode">우편번호</label>
+                    <label class="label" for="user_postcode" >우편번호</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input type="text" class="input" id="user_postcode" placeholder="My Postal Code">
+                            <div class="input-container">
+                                <input type="text" class="input" id="user_postcode" name="user_postcode" placeholder="My Postal Code 우편번호 찾기를 눌러주세요" readonly>
+                                <button id="postinput_find_button" class="btn btn-outline-success" type="button" onclick="execPostCode();">우편번호 찾기</button>
+                              </div>    
                         </div>
                     </div>
                 </div>
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label" for="user_address1">시/군/구</label>
+                    <label class="label" for="user_address1" >시/군/구</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input type="text" class="input" id="user_address1" placeholder="My Province">
+                            <input type="text" class="input" id="user_address1" name="user_address1" placeholder="My Province 우편번호 찾기를 눌러주세요" readonly>
                         </div>
                     </div>
                 </div>
