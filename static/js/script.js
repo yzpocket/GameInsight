@@ -243,9 +243,9 @@ function close_box(){
 }
 
 function critic_button_showing(){
-    // {% if user_type == '2' %}
+    // {% if user_type == '1' %}
     // <span>전문가</span><br>
-    // {% elif user_type == '1' %}
+    // {% elif user_type == '2' %}
     // <span>일반유저</span>
     // {% endif %}
   fetch('/api/nick',{method:'GET',})

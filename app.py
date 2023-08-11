@@ -112,6 +112,10 @@ def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+@app.route('/mainsection')
+def mainsection():
+    return render_template('mainsection.html')
+
 @app.route('/register')
 def register():
     return render_template('register.html')
