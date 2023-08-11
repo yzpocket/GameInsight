@@ -45,7 +45,9 @@
     width : 100%;
 }
 
+
 #aside{
+
     position: absolute;
     height: 720px;
     width : 29%;
@@ -54,7 +56,37 @@
     text-align: center;
     margin : 0px 0px 0px 10px;
 
+    height: 830px;
+    width : 560px;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+
 }
+
+ 
+
+.ranking-table-header th {
+    padding: 8px;
+    text-align: center;
+}
+.ranking-table td {
+    padding: 8px;
+    text-align: center;
+}
+.game-icon{
+    height: 100%;
+    width : 100%;
+    display: inline-block;
+    text-align: center; 
+}
+.ranking-table-rows{
+    font-size: 14px;
+}
+
+
+
 
 #section{
     height: 720px;

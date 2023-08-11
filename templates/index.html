@@ -3,81 +3,103 @@
 <html lang="en">
 
 <head>
+  <<<<<<< HEAD=======<!-- 인코딩 캐릭터셋 UTF-8지정 -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 부트스트랩 css 참조 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- jquery 참조 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 부트스트랩 javascript 참조 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <!-- Google Font 참조 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap"
+      rel="stylesheet">
+    <!-- JS 모듈화 참조 -->
+    <!-- Flask용 -->
+    <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+    <!-- Live Server 용 -->
+    <script src="/static/js/script.js"></script>
+    >>>>>>> 8c570297290feba2900af0b5923ba85ca415383a
 
-  <!-- Webpage Title -->
-  <title>Hello, world!</title>
+    <!-- Webpage Title -->
+    <title>Hello, world!</title>
 
-  <!-- 인코딩 캐릭터셋 UTF-8지정 -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 인코딩 캐릭터셋 UTF-8지정 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- JS -->
-  <!-- jquery 참조 -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- JS -->
+    <!-- jquery 참조 -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
-
-  <!-- 부트스트랩 css 참조 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- 부트스트랩 javascript 참조 -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 
-  <!-- Bulma CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- 부트스트랩 css 참조 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- 부트스트랩 javascript 참조 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
 
 
-  <!-- 내부 Static 경로 참조 -->
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <!-- JavaScript -->
-  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/user_review.js') }}"></script>
-
-  <!-- Daum 주소 API 활용 -->
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
 
-  <script>
-    // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
-    function logout() {
-      $.removeCookie('mytoken');
-      alert('로그아웃!')
-      window.location.href = '/'
-    }
-    // 팝업 열기
-    function openLoginPopup() {
-      $("#login-modal").addClass("is-active");
-    }
+    <!-- 내부 Static 경로 참조 -->
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/user_review.js') }}"></script>
 
-    // 팝업 닫기
-    function closeLoginPopup() {
-      $("#login-modal").removeClass("is-active");
-    }
+    <!-- Daum 주소 API 활용 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-  </script>
-  <title>Game Insight</title>
 
-  <!-- og태그 -->
-  <meta property="og:title" content="Game Insight" />
-  <meta property="og:description" content="각종 게임의 순위정보! 전문가 및 유저 리뷰를 확인 할 수 있는 커뮤니티 페이지 입니다." />
-  <meta property="og:image" content="https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg" />
+    <script>
+      // 로그아웃은 내가 가지고 있는 토큰만 쿠키에서 없애면 됩니다.
+      function logout() {
+        $.removeCookie('mytoken');
+        alert('로그아웃!')
+        window.location.href = '/'
+      }
+      // 팝업 열기
+      function openLoginPopup() {
+        $("#login-modal").addClass("is-active");
+      }
+
+      // 팝업 닫기
+      function closeLoginPopup() {
+        $("#login-modal").removeClass("is-active");
+      }
+
+    </script>
+    <title>Game Insight</title>
+
+    <!-- og태그 -->
+    <meta property="og:title" content="Game Insight" />
+    <meta property="og:description" content="각종 게임의 순위정보! 전문가 및 유저 리뷰를 확인 할 수 있는 커뮤니티 페이지 입니다." />
+    <meta property="og:image" content="https://cdn.casenews.co.kr/news/photo/202202/10630_22036_4230.jpg" />
 </head>
 
 <body>
+
   <!-- Container(Wrap) -->
   <div id="wrap">
     <!-- Header -->
     <header id="header" class="mypic">
       <h1>Game Insight</h1>
-
-
       <div id="nav_wrap">
         <!-- Navigation -->
         <div id="navigation" class="navigation">
@@ -146,26 +168,264 @@
       </section>
 
       <!--Aside-->
-      <aside id="aside" class="flex-item">
-        User_ID : {{ user_id }} <br>
-        User_Name : {{ user_name }}<br>
-        user_type Number : {{ user_type }}<br>
-        user_type TEXT :
-        {% if user_type == '2' %}
-        <span>전문가</span><br>
-        {% elif user_type == '1' %}
-        <span>일반유저</span>
-        {% endif %}
-      </aside>
+      <aside id="aside">
+        <table class="ranking-table">
+          <tr class="ranking-table-header">
+            <th class="tg-rank" colspan="1" width="20%">순위</th>
+            <th class="tg-img" width="20%">이미지</th>
+            <th class="tg-name" width="30%">이름</th>
+            <th class="tg-info" width="30%">정보</th>
+          </tr>
+          <tbody id="game-rank">
+            <tr class="ranking-table-rows">
+              <td>
+                <input id="game_rank" type="checkbox" class="rankSeq"> <span class="rank red">1</span>
+              </td>
+              <td>
+                <img id="game_icon" class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/26/18/221151(3).jpg">
+              </td>
+              <td>
+                <div id="game_name" class="game-name"><a href="https://www.leagueoflegends.com/ko-kr/">LOL</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p id="game_company" class="company"><a href="https://www.riotgames.com/ko">라이엇 게임즈</a></p>
+                  <span id="game_genre">AOS</span> |
+                  <span id="game_pay">부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">2</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g001/17/93/538821_200302-risell-uu5.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://playvalorant.com/ko-kr/">발로란트</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.riotgames.com/ko">라이엇 게임즈</a></p>
+                  <span>FPS</span> |
+                  <span>무료</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">3</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/10/53/221151(0).jpg">
+              </td>
+              <td>
+                <div class="game-name"><a
+                    href="https://maplestory.nexon.com/Promotion/event/2023/20230615/intro/2nd">메이플스토리</a>
+                </div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.nexon.com/Home/Game">넥슨</a></p>
+                  <span>MMORPG</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">4</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/96/37/692068_221151.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://fifaonline4.nexon.com/main/index">피파4</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.ea.com/ko-kr/ea-studios/ea-korea">EA스포츠</a>
+                  </p>
+                  <span>스포츠</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">5</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g001/15/92/370720_asdfasdf.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://diablo4.blizzard.com/ko-kr/">디아블로4</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.blizzard.com/ko-kr/">블리자드</a></p>
+                  <span>액션 RPG</span> |
+                  <span>개발중</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">6</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/72/97/221151.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://lostark.game.onstove.com/Main">로스트아크</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.smilegate.com/ko/">스마일 게이트</a></p>
+                  <span>AOS</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">7</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g001/15/96/592360_tsdfgjfg.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://overwatch.blizzard.com/ko-kr/">오버워치2</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.blizzard.com/ko-kr/">블리자드</a></p>
+                  <span>FPS</span> |
+                  <span>개발중</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">8</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/18/23/221151.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://sa.nexon.com/main/index.aspx">서든어택</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.riotgames.com/ko">넥슨지티</a></p>
+                  <span>FPS</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">9</span>
+              </td>
+              <td>
+                <img class="game-icon"
+                  src="https://cdn.gamemeca.com/gmdb/g000/60/12/gm277523_1253g2_KakaoTalk_20210809_123218557.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://www.kr.playblackdesert.com/ko-KR/Main/Index">검은사막</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.pearlabyss.com/ko-KR">펄 어비스</a></p>
+                  <span>MMORPG</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="ranking-table-rows">
+              <td>
+                <input type="checkbox" class="rankSeq"> <span class="rank red">10</span>
+              </td>
+              <td>
+                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/88/08/221151.jpg">
+              </td>
+              <td>
+                <div class="game-name"><a href="https://pubg.com/ko/">배틀그라운드</a></div>
+              </td>
+              <td>
+                <div class="game-info">
+                  <p class="company"><a href="https://www.krafton.com/">크래프톤</a></p>
+                  <span>FPS</span> |
+                  <span>부분유료화</span>
+                </div>
+              </td>
+              <td>
+                <div class="game-infor">
+                  <button type="button" class="btn btn-secondary btn-sm">+</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
-    <!-- Footer -->
-    <footer id="footer">
-      <p>COMPANY : YZPOCKET / OWNER : Team GameInsight / CALL CENTER : 010-2872-5915 / ADDRESS : 서울시 구로구 디지털로31길 41 /
-        개인정보관리 책임자 : 대표 김인용 admin@yzpocket.com / 사업자등록번호 : [237-58-00466] / 종목 : 응용 소프트웨어 개발 및 공급업
+    </aside>
+    <!-- --------------------------------- -->
 
-        <br>Copyright by YZPOCKET. All rights reserved.
-      </p>
-    </footer>
+  </div>
+  <!-- Footer -->
+  <footer id="footer">
+    <p>COMPANY : YZPOCKET / OWNER : Team GameInsight / CALL CENTER : 010-2872-5915 / ADDRESS : 서울시 구로구 디지털로31길 41 /
+      개인정보관리 책임자 : 대표 김인용 admin@yzpocket.com / 사업자등록번호 : [237-58-00466] / 종목 : 응용 소프트웨어 개발 및 공급업
+
+      <br>Copyright by YZPOCKET. All rights reserved.
+    </p>
+  </footer>
   </div>
 </body>
 
