@@ -116,7 +116,7 @@ def api_register():
     type_receive = request.form['type_give']
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
-
+    print(id_receive)
     db.user.insert_one({'user_id': id_receive,
                         'user_password': pw_hash,
                         'user_email': email_receive,
