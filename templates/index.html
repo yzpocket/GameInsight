@@ -17,7 +17,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <!-- Google Font 참조 -->
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Orbit&display=swap"
+        rel="stylesheet">
     <!-- JS 모듈화 참조 -->
     <!-- Flask용 -->
     <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
@@ -42,7 +44,7 @@
     <div id="wrap">
         <!-- Header -->
         <header id="header" class="mypic">
-			<h1>Game Insight</h1>
+            <h1>Game Insight</h1>
 
             <div id="nav_wrap">
                 <!-- Navigation -->
@@ -60,24 +62,274 @@
                     <span><a href="">로그인</a></span>
                 </div>
             </div>
-		</header>
-		
+        </header>
+
         <!-- Content&Aside Wrap -->
         <div id="content_aside">
             <!-- Section -->
-            <section id="section"> 
+            <section id="section">
                 <p>section</p>
             </section>
-        
+
             <!--Aside-->
             <aside id="aside">
-                <p>aside</p>
-            </aside>
+                <table class="ranking-table">
+                    <tr class="ranking-table-header">
+                        <th class="tg-rank" colspan="1" width="20%">순위</th>
+                        <th class="tg-img" width="20%">이미지</th>
+                        <th class="tg-name" width="30%">이름</th>
+                        <th class="tg-info" width="30%">정보</th>
+                    </tr>
+                    <tbody id="game-rank">
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input id="game_rank" type="checkbox" class="rankSeq"> <span class="rank red">1</span>
+                            </td>
+                            <td>
+                                <img id="game_icon" class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/26/18/221151(3).jpg">
+                            </td>
+                            <td>
+                                <div id="game_name" class="game-name"><a href="https://www.leagueoflegends.com/ko-kr/">LOL</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p id="game_company" class="company"><a href="https://www.riotgames.com/ko">라이엇 게임즈</a></p>
+                                    <span id="game_genre">AOS</span> |
+                                    <span id="game_pay">부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">2</span>
+                            </td>
+                            <td>
+                                <img class="game-icon"
+                                    src="https://cdn.gamemeca.com/gmdb/g001/17/93/538821_200302-risell-uu5.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://playvalorant.com/ko-kr/">발로란트</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.riotgames.com/ko">라이엇 게임즈</a></p>
+                                    <span>FPS</span> |
+                                    <span>무료</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">3</span>
+                            </td>
+                            <td>
+                                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/10/53/221151(0).jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a
+                                        href="https://maplestory.nexon.com/Promotion/event/2023/20230615/intro/2nd">메이플스토리</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.nexon.com/Home/Game">넥슨</a></p>
+                                    <span>MMORPG</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">4</span>
+                            </td>
+                            <td>
+                                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/96/37/692068_221151.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://fifaonline4.nexon.com/main/index">피파4</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.ea.com/ko-kr/ea-studios/ea-korea">EA스포츠</a>
+                                    </p>
+                                    <span>스포츠</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">5</span>
+                            </td>
+                            <td>
+                                <img class="game-icon"
+                                    src="https://cdn.gamemeca.com/gmdb/g001/15/92/370720_asdfasdf.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://diablo4.blizzard.com/ko-kr/">디아블로4</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.blizzard.com/ko-kr/">블리자드</a></p>
+                                    <span>액션 RPG</span> |
+                                    <span>개발중</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">6</span>
+                            </td>
+                            <td>
+                                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/72/97/221151.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://lostark.game.onstove.com/Main">로스트아크</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.smilegate.com/ko/">스마일 게이트</a></p>
+                                    <span>AOS</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">7</span>
+                            </td>
+                            <td>
+                                <img class="game-icon"
+                                    src="https://cdn.gamemeca.com/gmdb/g001/15/96/592360_tsdfgjfg.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://overwatch.blizzard.com/ko-kr/">오버워치2</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.blizzard.com/ko-kr/">블리자드</a></p>
+                                    <span>FPS</span> |
+                                    <span>개발중</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">8</span>
+                            </td>
+                            <td>
+                                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/18/23/221151.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://sa.nexon.com/main/index.aspx">서든어택</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.riotgames.com/ko">넥슨지티</a></p>
+                                    <span>FPS</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">9</span>
+                            </td>
+                            <td>
+                                <img class="game-icon"
+                                    src="https://cdn.gamemeca.com/gmdb/g000/60/12/gm277523_1253g2_KakaoTalk_20210809_123218557.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a
+                                        href="https://www.kr.playblackdesert.com/ko-KR/Main/Index">검은사막</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.pearlabyss.com/ko-KR">펄 어비스</a></p>
+                                    <span>MMORPG</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ranking-table-rows">
+                            <td>
+                                <input type="checkbox" class="rankSeq"> <span class="rank red">10</span>
+                            </td>
+                            <td>
+                                <img class="game-icon" src="https://cdn.gamemeca.com/gmdb/g000/88/08/221151.jpg">
+                            </td>
+                            <td>
+                                <div class="game-name"><a href="https://pubg.com/ko/">배틀그라운드</a></div>
+                            </td>
+                            <td>
+                                <div class="game-info">
+                                    <p class="company"><a href="https://www.krafton.com/">크래프톤</a></p>
+                                    <span>FPS</span> |
+                                    <span>부분유료화</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="game-infor">
+                                    <button type="button" class="btn btn-secondary btn-sm">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
-        <!--풋터-->
-        <footer id="footer">
-            <p>©2023 Wisetree. All Rights Reserved.</p>
-        </footer>
+        </aside>
+        <!-- --------------------------------- -->
+    </div>
+    <!--풋터-->
+    <footer id="footer">
+        <p>©2023 Wisetree. All Rights Reserved.</p>
+    </footer>
     </div>
 </body>
+
 </html>

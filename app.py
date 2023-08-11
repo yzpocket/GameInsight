@@ -13,8 +13,8 @@ import certifi
 # DB 커넥션 구성
 ca = certifi.where()
 client = MongoClient('mongodb+srv://ohnyong:test@cluster0.lu7mz8j.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
-db = client.dbsparta
-
+db = client.gameinsight
+collection = db['game_rank']
 # 웹 크롤링을 위한 임포트
 import requests
 from bs4 import BeautifulSoup
@@ -26,8 +26,15 @@ from bs4 import BeautifulSoup
 # headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 # data = requests.get(URL, headers=headers)
 # soup = BeautifulSoup(data.text, 'html.parser')
+URL5 = "https://www.gamemeca.com/ranking.php" 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+data = requests.get(URL5, headers=headers)
 
-
+@app.route("/game_ranking", methods=["GET"])
+def game_rank_get():
+    all_game_ranks = list(db.game_rank.find({},{'_id':False}))
+    return jsonify({'result':all_game_ranks})
 
 # ------------크롤링 PATH 부분----------------------------------------------------------------------------------------------------------------------
 
@@ -37,10 +44,6 @@ def home():
    return render_template('index.html')
 
 # ------------기능 구현 함수 부분----------------------------------------------------------------------------------------------------------------------
-
-
-
-
 
 # ------------기능 구현 함수 부분------------------------------------------------------------------------------------------------------------------------
 
